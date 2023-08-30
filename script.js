@@ -1,19 +1,36 @@
-const generatePassword = () => {
-    const length = document.getElementById('length').value;
-    const lowercase = 'abcdefghijklmnopqrstuvwxyz';
-    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numbers = '0123456789';
-    const symbols = '!@#$%^&*()_-+=<>?';
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-    const allChars = lowercase + uppercase + numbers + symbols;
+.container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-    let password = '';
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * allChars.length);
-        password += allChars[randomIndex];
-    }
+.password {
+    margin-top: 20px;
+}
 
-    document.getElementById('result').textContent = password;
-};
+.result {
+    font-weight: bold;
+    margin-top: 10px;
+}
 
-document.getElementById('generate').addEventListener('click', generatePassword);
+#copy {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
