@@ -1,36 +1,34 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+const generatePassword = () => {
+    const length = document.getElementById('length').value;
+    const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+    const symbols = '!@#$%^&*()_-+=<>?';
 
-.container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+    const allChars = lowercase + uppercase + numbers + symbols;
 
-.password {
-    margin-top: 20px;
-}
+    let password = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * allChars.length);
+        password += allChars[randomIndex];
+    }
 
-.result {
-    font-weight: bold;
-    margin-top: 10px;
-}
+    document.getElementById('result').textContent = password;
+    document.getElementById('copy').disabled = false;
+};
 
-#copy {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-}
+const copyToClipboard = () => {
+    const password = document.getElementById('result').textContent;
+
+    const textarea = document.createElement('textarea');
+    textarea.value = password;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+
+    alert('Password copied to clipboard!');
+};
+
+document.getElementById('generate').addEventListener('click', generatePassword);
+document.getElementById('copy').addEventListener('click', copyToClipboard);
