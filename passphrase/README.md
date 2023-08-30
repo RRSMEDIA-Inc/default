@@ -1,0 +1,3 @@
+# pwizard
+
+Generate strong passwords.
