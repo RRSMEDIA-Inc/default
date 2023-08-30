@@ -3,5 +3,5 @@ document.getElementById('password-button').addEventListener('click', function() 
 });
 
 document.getElementById('passphrase-button').addEventListener('click', function() {
-    window.location.href = 'https://inc.rrsmedia.co.in/passphrase';
+    window.location.href = 'https://rrsmedia.netlify.app/';
 });
